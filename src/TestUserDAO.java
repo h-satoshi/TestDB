@@ -9,47 +9,47 @@ public class TestUserDAO {
 	
 	String password = "";
 	
-public void select(String name,String password) {
+	public void select(String name,String password) {
 	
-	DBConnector db = new DBConnector();
+		DBConnector db = new DBConnector();
 	
-	Connection con = db.getConnection();
+		Connection con = db.getConnection();
 	
-	String sql = "select * from test_table where user_name=? and password=?";
+		String sql = "select * from test_table where user_name = ? and password = ?";
 	
-	try {
+		try {
 		
-		PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setString(1, name);
+			ps.setString(1, name);
 		
-		ps.setString(2, password);
+			ps.setString(2, password);
 		
-		ResultSet rs = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 		
-		if (rs.next()) {
+			if (rs.next()) {
 			
-			System.out.println(rs.getString("user_name"));
+				System.out.println(rs.getString("user_name"));
 			
-			System.out.println(rs.getString("password"));
+				System.out.println(rs.getString("password"));
 			
+			}
+		
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		
 		}
-		
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-		
-	}
 	
-	try {
+		try {
 		
-		con.close();
+			con.close();
+			
+		} catch (SQLException e) {
 		
-	} catch (SQLException e) {
+			e.printStackTrace();
 		
-		e.printStackTrace();
-		
+		}
 	}
-}
 
 }

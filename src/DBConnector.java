@@ -10,30 +10,30 @@ public class DBConnector {
 	
 	private static String user = "root";
 	
-	private static String password = "mysql";
+	private static String password = "";
 		
-public Connection getConnection() {
+	public Connection getConnection() {
 	
-	Connection con = null;
+		Connection con = null;
 	
-	try {
+		try {
 		
-		Class.forName(driverName);
+			Class.forName(driverName);
 		
-		con = DriverManager.getConnection(url,user,password);
+			con = DriverManager.getConnection(url,user,password);
 		
-	} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 		
-		e.printStackTrace();
+			e.printStackTrace();
 		
-	} catch (SQLException e) {
+		} catch (SQLException e) {
 		
-		e.printStackTrace();
+			e.printStackTrace();
 		
+		}
+	
+		return con;
+	
 	}
-	
-	return con;
-	
-}
 
 }
